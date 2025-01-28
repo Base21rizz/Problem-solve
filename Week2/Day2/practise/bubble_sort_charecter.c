@@ -1,5 +1,5 @@
 #include<stdio.h>
-void sort(int array[] ,int size)
+void sort(char array[] ,int size)
 {
     for (int i = 0; i < size - 1; i++)
     {
@@ -14,16 +14,16 @@ void sort(int array[] ,int size)
         }
     }
 }
-void print(int array[] ,int size)
+void print(char array[] ,int size)
 {
     for (int k = 0; k < size; k++)
     {
-        printf("%d ",array[k]);
+        printf("%c ",array[k]);
     }  
 }
 int main()
 {
-    int array[]={7,9,1,4,2,8,5,6};
+    char array[]={'c', 'l', 'x', 'a' , 'r'};
     int size = sizeof(array)/sizeof(array[0]);
     sort(array, size);
     print(array , size);
