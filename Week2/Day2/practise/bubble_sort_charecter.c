@@ -14,11 +14,11 @@ void sort(char array[] ,int size)
         }
     }
 }
-void print(char array[] ,int size)
+void print(char srf[] ,int size)
 {
     for (int k = 0; k < size; k++)
     {
-        printf("%c ",array[k]);
+        printf("%c ",srf[k]);
     }  
 }
 int main()
