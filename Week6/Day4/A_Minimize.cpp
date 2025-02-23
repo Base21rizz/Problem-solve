@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main()
+{
+    int tc; cin >> tc;
+    while (tc--) 
+    {
+        int a,b;
+        cin >> a >> b;
+        cout << abs(a-b) << endl;
+    }
+    return 0;
+}
