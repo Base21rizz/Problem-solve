@@ -21,6 +21,6 @@ int main()
             return 0;
         }
     }
-    cout << "NO" << endl;   
+    cout << "NO" << endl;  
     return 0;
 }
