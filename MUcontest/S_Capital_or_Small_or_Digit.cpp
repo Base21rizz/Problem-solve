@@ -13,18 +13,18 @@ signed main()
     ios::sync_with_stdio(false); cin.tie(NULL);
     char x;
     cin >> x;
-    if(48 <= (int)x &&  (int)x <= 57)
+    if(isdigit(x))
     {
         cout << "IS DIGIT";
     }
-    else if(65 <= (int)x &&  (int)x <= 90)
+    else if(isupper(x))
     {
-        cout << "ALPHA \n";
+        cout << "ALPHA" << endl;
         cout << "IS CAPITAL";
     }
-    else if('a' <= x && x <= 'z')
+    else if(islower(x))
     {
-        cout << "ALPHA \n";
+        cout << "ALPHA" << endl;
         cout << "IS SMALL";
     }
     return 0;
