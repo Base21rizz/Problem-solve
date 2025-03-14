@@ -11,32 +11,29 @@ using namespace std;
 signed main()
 {
     ios::sync_with_stdio(false); cin.tie(NULL);
-    int tc,n = 0; cin >> tc;
-    vector<string> v;
+    int tc; cin >> tc;
     while (tc--) 
     {
-        string s;
-        cin >> s;
-        for (int i = 0; i < s.size(); i++)
+        int n;
+        cin >> n;
+        int arr[6];
+        int total=0,m=1;
+        for (int i = 1; i < 6; i++)
         {
-            if(v[i] == s)
-            {
-                n++;
-            }
+            arr[i] = n%10;
+            n = n/10;
+            if(arr[i] != 0) total++;
         }
-        for (int i = 0; i < v.size(); i++)
+        cout << total << endl;
+        for (int i = 1; i < 6; i++)
         {
-            if(v[i] != s)
+            if(arr[i] != 0)
             {
-                cout << "OK";
+                cout << arr[i]*m << " ";
             }
-            else
-            {
-                cout << s << n;
-            }
+            m = m*10;
         }
-        v.pb(s);
-        n = 0;
+        cout << endl;
     }
     
     return 0;
