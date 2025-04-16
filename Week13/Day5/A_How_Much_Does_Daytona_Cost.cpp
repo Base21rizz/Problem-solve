@@ -21,7 +21,7 @@ signed main()
         for (int i = 0; i < n; i++)
         {
             cin >> v[i];
-            freq[v[i]]++;
+            freq[v[i]]++; 
         }
         int k_cnt = freq[k];
         int max_freq = 0;
