@@ -1,0 +1,1 @@
+{"name":"Local: sumofanarrayele","url":"f:\\Problem solve\\EZE\\sumofanarrayele.c","tests":[{"id":1745943740577,"input":"8 \n5 5 7 3 4 6 7 3","output":"40"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Problem solve\\EZE\\sumofanarrayele.c","group":"local","local":true}
