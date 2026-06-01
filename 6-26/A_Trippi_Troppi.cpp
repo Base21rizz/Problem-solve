@@ -13,10 +13,10 @@
 #include <bits/stdc++.h>
 #define int long long
 #define endl '\n'
-#define YES cout << "YES" << endl
-#define NO cout << "NO" << endl
-#define Yes cout << "Yes" << endl
-#define No cout << "No" << endl
+#define YES cout << "YES" << endl;
+#define NO cout << "NO" << endl;
+#define Yes cout << "Yes" << endl;
+#define No cout << "No" << endl;
 #define pb push_back
 using namespace std;
 
@@ -24,27 +24,21 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
-    cin >> n;
-    bool flag = true;
-    int luckies[] = {4, 7, 47, 74, 447, 474, 477, 744, 747, 774};
-    int lcs = 10;
-    for (int i = 0; i < 10; i++)
+    int tc;
+    cin >> tc;
+    cin.ignore();
+    while (tc--)
     {
-        if (n == luckies[i])
+        string s, sss;
+        getline(cin, s);
+        for (int i = -1; i < s.size(); i++)
         {
-            YES;
-            return 0;
-        }
-        elseO
-        {
-            if (n % luckies[i] == 0)
+            if (s[i] == ' ' || i == -1)
             {
-                YES;
-                return 0;
+                sss += s[i + 1];
             }
         }
+        cout << sss << endl;
     }
-    NO;
     return 0;
 }

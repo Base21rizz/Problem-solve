@@ -13,10 +13,10 @@
 #include <bits/stdc++.h>
 #define int long long
 #define endl '\n'
-#define YES cout << "YES" << endl
-#define NO cout << "NO" << endl
-#define Yes cout << "Yes" << endl
-#define No cout << "No" << endl
+#define YES cout << "YES" << endl;
+#define NO cout << "NO" << endl;
+#define Yes cout << "Yes" << endl;
+#define No cout << "No" << endl;
 #define pb push_back
 using namespace std;
 
@@ -26,25 +26,50 @@ signed main()
     cin.tie(NULL);
     int n;
     cin >> n;
-    bool flag = true;
-    int luckies[] = {4, 7, 47, 74, 447, 474, 477, 744, 747, 774};
-    int lcs = 10;
-    for (int i = 0; i < 10; i++)
+    int spaces = 2 * n;
+    for (int i = 0; i <= n; i++)
     {
-        if (n == luckies[i])
+        for (int j = spaces; j > 0; j--)
+            cout << " ";
+        for (int j = 0; j <= i; j++)
         {
-            YES;
-            return 0;
+            if (i == 0 && j == 0)
+                cout << 0;
+            else
+                cout << j << ' ';
         }
-        elseO
+        for (int j = i - 1; j >= 0; j--)
         {
-            if (n % luckies[i] == 0)
-            {
-                YES;
-                return 0;
-            }
+            if (j == 0)
+                cout << 0;
+            else
+                cout << j << ' ';
         }
+
+        spaces -= 2;
+        cout << endl;
     }
-    NO;
+    spaces = 2;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        for (int j = spaces; j > 0; j--)
+            cout << " ";
+        for (int j = 0; j <= i; j++)
+            if (i == 0 && j == 0)
+                cout << 0;
+            else
+                cout << j << ' ';
+        for (int j = i - 1; j >= 0; j--)
+        {
+            if (j == 0)
+                cout << 0;
+            else
+                cout << j << ' ';
+        }
+
+        spaces += 2;
+        cout << endl;
+    }
+
     return 0;
 }
