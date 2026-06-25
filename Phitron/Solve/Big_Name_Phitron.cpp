@@ -13,17 +13,20 @@ signed main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     string s;
-    cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
+    getline(cin, s);
+    string subS = "phitron";
+    for (char &c : s)
+        c = tolower(static_cast<unsigned char>(c));
+
+    stringstream sss;
+    sss << s;
+    string word;
+    int count = 0;
+    while (sss >> word)
     {
-        if (s[i] != s[i + 1])
-            x++;
+        if (word == subS)
+            count++;
     }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
-    else
-        cout << "IGNORE HIM!";
+    cout << count;
     return 0;
 }

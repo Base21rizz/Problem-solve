@@ -12,25 +12,29 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, x;
-    x = 0;
+    int n;
     cin >> n;
-    vector<string> s(n);
+    int arr[n];
+    int sortArr[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> s[i];
+        cin >> arr[i];
+        sortArr[i] = arr[i];
     }
+    sort(sortArr, sortArr + n);
+    int median = n / 2;
+    int index = 0;
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == "X++" || s[i] == "++X")
-        {
-            x++;
-        }
-        else if (s[i] == "--X" || s[i] == "X--")
-        {
-            x--;
-        }
+        if (arr[i] == sortArr[median])
+            index = i;
     }
-    cout << x;
+    if (index == n / 2)
+    {
+        cout << 0;
+    }
+    else
+        cout << abs(index - median);
+
     return 0;
 }

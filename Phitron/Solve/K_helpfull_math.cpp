@@ -12,18 +12,21 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    string s;
+    string s, t;
     cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
+    for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] != s[i + 1])
-            x++;
+        if (s[i] != '+')
+            t += s[i];
     }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
-    else
-        cout << "IGNORE HIM!";
+    sort(t.begin(), t.end());
+    for (int i = 0; i < t.size(); i++)
+    {
+        if (i == (t.size() - 1))
+            cout << t[i];
+        else
+            cout << t[i] << '+';
+    }
+
     return 0;
 }

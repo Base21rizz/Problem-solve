@@ -14,16 +14,20 @@ signed main()
     cin.tie(NULL);
     string s;
     cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
+    int noLoop = 1;
+    int oddDS = 0, evenDS = 0;
+    for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] != s[i + 1])
-            x++;
+        if (noLoop % 2 == 0)
+        {
+            oddDS += (s[i] - '0');
+        }
+        else
+        {
+            evenDS += (s[i] - '0');
+        }
+        noLoop++;
     }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
-    else
-        cout << "IGNORE HIM!";
-    return 0;
+    if ((abs(oddDS - evenDS) % 11) == 0)
+        YES else NO return 0;
 }

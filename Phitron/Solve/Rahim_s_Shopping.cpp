@@ -12,25 +12,28 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, x;
-    x = 0;
-    cin >> n;
-    vector<string> s(n);
+    int n, HP;
+    cin >> n >> HP;
+    int arr[n];
+    int newArr[n] = {0};
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    int j = 0;
     for (int i = 0; i < n; i++)
     {
-        cin >> s[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == "X++" || s[i] == "++X")
+        if (arr[i] <= HP)
         {
-            x++;
-        }
-        else if (s[i] == "--X" || s[i] == "X--")
-        {
-            x--;
+            newArr[j] = arr[i];
+            j++;
         }
     }
-    cout << x;
+    sort(newArr, newArr + n, greater<int>());
+
+    if (newArr[0] == 0)
+        cout << "-1";
+    else
+        cout << newArr[0] << endl;
+
     return 0;
 }

@@ -1,13 +1,24 @@
-#include <stdio.h>
-int main()
+#include <bits/stdc++.h>
+#define int long long
+#define endl '\n'
+#define YES cout << "YES" << endl;
+#define NO cout << "NO" << endl;
+#define Yes cout << "Yes" << endl;
+#define No cout << "No" << endl;
+#define pb push_back
+using namespace std;
+
+signed main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     int n, k, score;
     score = 0;
-    scanf("%d %d", &n, &k);
+    cin >> n >> k;
     int arr[n];
     for (int i = 0; i < n; i++)
     {
-        scanf("%d", &arr[i]);
+        cin >> arr[i];
     }
     for (int i = 0; i < n; i++)
     {
@@ -30,6 +41,8 @@ int main()
             }
         }
     }
-    printf("%d", score);
+    cout << score;
+    return 0;
+
     return 0;
 }

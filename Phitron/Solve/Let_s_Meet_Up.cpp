@@ -12,18 +12,9 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    string s;
-    cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
-    {
-        if (s[i] != s[i + 1])
-            x++;
-    }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
-    else
-        cout << "IGNORE HIM!";
+    int a, b;
+    cin >> a >> b;
+    cout << ((abs(a * b)) / __gcd(a, b));
+
     return 0;
 }

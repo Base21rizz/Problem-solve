@@ -1,0 +1,1 @@
+{"name":"Local: A_Team","url":"f:\\Solve\\Problem-solve\\Week3\\Day4\\A_Team.cpp","tests":[{"id":1781422454267,"input":"3\n1 1 0\n1 1 1\n1 0 0\n","output":""},{"id":1781422465720,"input":"2\n1 0 0\n0 1 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Solve\\Problem-solve\\Week3\\Day4\\A_Team.cpp","group":"local","local":true}

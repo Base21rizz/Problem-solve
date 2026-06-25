@@ -14,16 +14,19 @@ signed main()
     cin.tie(NULL);
     string s;
     cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
+
+    string space = " ";
+    string egypt = "EGYPT";
+    int count = 0;
+    bool flag = true;
+    int n = s.size();
+
+    while ((count = s.find(egypt, count)) != string::npos)
     {
-        if (s[i] != s[i + 1])
-            x++;
+        s.replace(count, 5, space);
+        count++;
     }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
-    else
-        cout << "IGNORE HIM!";
+
+    cout << s << endl;
     return 0;
 }

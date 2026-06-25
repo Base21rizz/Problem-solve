@@ -12,25 +12,27 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, x;
-    x = 0;
+    int n, half, count = 0, sum1 = 0, total = 0;
     cin >> n;
-    vector<string> s(n);
+    int arr[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> s[i];
+        cin >> arr[i];
+        total += arr[i];
     }
-    for (int i = 0; i < n; i++)
+    half = total / 2;
+    sort(arr, arr + n);
+    for (int i = n - 1; i >= 0; i--)
     {
-        if (s[i] == "X++" || s[i] == "++X")
+        sum1 += arr[i];
+        count++;
+        if (sum1 > half)
         {
-            x++;
-        }
-        else if (s[i] == "--X" || s[i] == "X--")
-        {
-            x--;
+            cout << count;
+            return 0;
         }
     }
-    cout << x;
+
+    cout << count;
     return 0;
 }

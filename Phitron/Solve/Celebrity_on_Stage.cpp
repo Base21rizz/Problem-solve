@@ -12,25 +12,25 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, x;
-    x = 0;
-    cin >> n;
-    vector<string> s(n);
+    int n, k;
+    cin >> n >> k;
+    int arr[n];
     for (int i = 0; i < n; i++)
     {
-        cin >> s[i];
+        cin >> arr[i];
     }
-    for (int i = 0; i < n; i++)
+    int height = arr[k - 1];
+    int count1 = 0, count2 = 0;
+    for (int i = 0; i < k - 1; i++)
     {
-        if (s[i] == "X++" || s[i] == "++X")
-        {
-            x++;
-        }
-        else if (s[i] == "--X" || s[i] == "X--")
-        {
-            x--;
-        }
+        if (arr[i] > height)
+            count1++;
     }
-    cout << x;
+    for (int i = k; i < n; i++)
+    {
+        if (arr[i] < height)
+            count2++;
+    }
+    cout << count1 << " " << count2 << endl;
     return 0;
 }

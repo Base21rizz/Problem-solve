@@ -14,16 +14,25 @@ signed main()
     cin.tie(NULL);
     string s;
     cin >> s;
-    int x = 0;
-    sort(s.begin(), s.end());
-    for (int i = 0; i < s.length(); i++)
+    int countBig = 0, countSmall = 0;
+    for (auto c : s)
     {
-        if (s[i] != s[i + 1])
-            x++;
+        if (c >= 65 && c <= 90)
+            countBig++;
+        else if (c >= 97 && c <= 122)
+            countSmall++;
     }
-    if (x % 2 == 0)
-        cout << "CHAT WITH HER!";
+    if (countBig > countSmall)
+    {
+        transform(s.begin(), s.end(), s.begin(), ::toupper);
+    }
+
     else
-        cout << "IGNORE HIM!";
+    {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+    }
+
+    cout << s;
+
     return 0;
 }

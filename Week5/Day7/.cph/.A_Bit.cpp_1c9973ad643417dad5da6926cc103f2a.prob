@@ -1,0 +1,1 @@
+{"name":"Local: A_Bit","url":"f:\\Solve\\Problem-solve\\Week5\\Day7\\A_Bit.cpp","tests":[{"id":1781419090079,"input":"1\n++X\n","output":""},{"id":1781419098084,"input":"2\nX++\n--X\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Solve\\Problem-solve\\Week5\\Day7\\A_Bit.cpp","group":"local","local":true}

@@ -12,25 +12,26 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, x;
-    x = 0;
-    cin >> n;
-    vector<string> s(n);
-    for (int i = 0; i < n; i++)
+    int tc;
+    cin >> tc;
+    while (tc--)
     {
-        cin >> s[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == "X++" || s[i] == "++X")
+        string s, t;
+        vector<char> q;
+        int n, l;
+        cin >> n >> l;
+        cin >> s >> t;
+
+        for (int i = 0; i < n; i++)
         {
-            x++;
+            if (s[i] == t[i])
+                q.pb(s[i]);
+            else
+                break;
         }
-        else if (s[i] == "--X" || s[i] == "X--")
-        {
-            x--;
-        }
+        for (auto x : q)
+            cout << x;
+        cout << endl;
     }
-    cout << x;
     return 0;
 }

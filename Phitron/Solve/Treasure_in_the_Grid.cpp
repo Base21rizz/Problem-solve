@@ -12,28 +12,29 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int a, b, ans = 0;
-    int arr[5][5];
-    for (int i = 0; i < 5; i++)
+    int n, m, q, x1, x2, y1, y2;
+    cin >> n >> m >> q;
+    int arr[n][m];
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < m; j++)
         {
             cin >> arr[i][j];
         }
     }
-    for (int i = 0; i < 5; i++)
+    while (q--)
     {
-        for (int j = 0; j < 5; j++)
+        int count = 0;
+        cin >> x1 >> x2 >> y1 >> y2;
+        for (int i = x1; i <= y1; i++)
         {
-            if (arr[i][j] == 1)
+            for (int j = x2; j <= y2; j++)
             {
-                a = i;
-                b = j;
+                count += arr[i][j];
             }
         }
+        cout << count << endl;
     }
-    arr[2][2] = 1;
-    ans = abs(a - 2) + abs(b - 2);
-    cout << ans;
+
     return 0;
 }
