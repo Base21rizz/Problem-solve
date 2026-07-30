@@ -7,27 +7,6 @@
 #define No cout << "No" << endl;
 #define pb push_back
 using namespace std;
-struct Student
-{
-public:
-    string name;
-    int cls;
-    char section;
-    int id;
-    int mathMarks;
-    int engMarks;
-    int totalMarks;
-};
-
-bool cmp(Student l, Student r)
-{
-    if (l.totalMarks == r.totalMarks)
-    {
-        return l.id < r.id;
-    }
-    else
-        return l.totalMarks > r.totalMarks;
-}
 
 signed main()
 {
@@ -35,17 +14,18 @@ signed main()
     cin.tie(NULL);
     int n;
     cin >> n;
-    Student arr[n];
+    int arr[n];
     for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i].name >> arr[i].cls >> arr[i].section >> arr[i].id >> arr[i].mathMarks >> arr[i].engMarks;
-        arr[i].totalMarks = arr[i].mathMarks + arr[i].engMarks;
-    }
-    sort(arr, arr + n, cmp);
+        cin >> arr[i];
+
+    sort(arr, arr + n);
     for (int i = 0; i < n; i++)
-    {
-        cout << arr[i].name << " " << arr[i].cls << " " << arr[i].section << " " << arr[i].id << " " << arr[i].mathMarks << " " << arr[i].engMarks << endl;
-    }
+        cout << arr[i] << " ";
+    cout << endl;
+
+    sort(arr, arr + n, greater<int>());
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
 
     return 0;
 }
