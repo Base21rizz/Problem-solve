@@ -1,0 +1,1 @@
+{"name":"Local: Breadth_First_Search","url":"f:\\Solve\\Problem-solve\\Breadth_First_Search.cpp","tests":[{"id":1785925469790,"input":"4\n1 2 2 4\n2 1 4\n3 0\n4 1 3\n","output":"1 0\n2 1\n3 2\n4 1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\Solve\\Problem-solve\\Breadth_First_Search.cpp","group":"local","local":true}
