@@ -31,7 +31,8 @@ signed main()
         if (arr[i] == temp)
             temp++;
     }
-    for(auto it: mexes) cout << it << " ";
+    for (auto it : mexes)
+        cout << it << " ";
 
     return 0;
 }

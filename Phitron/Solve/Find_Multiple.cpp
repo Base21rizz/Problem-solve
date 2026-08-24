@@ -12,26 +12,20 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
-    cin >> n;
-    int arr[n];
-    int temp = 0;
-    vector<int> mexes;
-    for (int i = 0; i < n; i++)
+    int a, b, c;
+    cin >> a >> b >> c;
+    int ans = 0, i = 1;
+    while (ans < 1001)
     {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        while (arr[i] > temp)
+        ans = c * i;
+        if (a <= ans && ans <= b)
         {
-            mexes.pb(temp);
-            temp++;
+            cout << ans << endl;
+            return 0;
         }
-        if (arr[i] == temp)
-            temp++;
+        i++;
     }
-    for(auto it: mexes) cout << it << " ";
+    cout << "-1" << endl;
 
     return 0;
 }

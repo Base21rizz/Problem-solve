@@ -14,24 +14,27 @@ signed main()
     cin.tie(NULL);
     int n;
     cin >> n;
-    int arr[n];
-    int temp = 0;
-    vector<int> mexes;
-    for (int i = 0; i < n; i++)
+    queue<int> q;
+    while (n--)
     {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        while (arr[i] > temp)
+        int t, x;
+        cin >> t;
+        if (t == 1)
         {
-            mexes.pb(temp);
-            temp++;
+            cin >> x;
+            q.push(x);
         }
-        if (arr[i] == temp)
-            temp++;
+        if (t == 2)
+        {
+            if (q.empty())
+                cout << "-1" << endl;
+            else
+            {
+                cout << q.front() << endl;
+                q.pop();
+            }
+        }
     }
-    for(auto it: mexes) cout << it << " ";
 
     return 0;
 }

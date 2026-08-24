@@ -43,3 +43,5 @@ signed main()
     }
     return 0;
 }
+
+min(2 * min(even, odd))

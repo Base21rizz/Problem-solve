@@ -14,24 +14,26 @@ signed main()
     cin.tie(NULL);
     int n;
     cin >> n;
-    int arr[n];
-    int temp = 0;
-    vector<int> mexes;
-    for (int i = 0; i < n; i++)
+    vector<int> even;
+    vector<int> odd;
+    int evenMax = 0;
+    int oddMax = 0;
+    for (int i = 1; i <= n; i++)
     {
-        cin >> arr[i];
-    }
-    for (int i = 0; i < n; i++)
-    {
-        while (arr[i] > temp)
+        int x;
+        cin >> x;
+        if (i % 2 == 0)
         {
-            mexes.pb(temp);
-            temp++;
+            even.push_back(x);
+            evenMax = max(evenMax, x);
         }
-        if (arr[i] == temp)
-            temp++;
+        else
+        {
+            odd.push_back(x);
+            oddMax = max(oddMax, x);
+        }
     }
-    for(auto it: mexes) cout << it << " ";
+    cout << evenMax + oddMax << endl;
 
     return 0;
 }
