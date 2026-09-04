@@ -3,8 +3,8 @@
 
 ██████╗  █████╗ ███████╗███████╗██████╗  ██╗██████╗ ██╗███████╗███████╗
 ██╔══██╗██╔══██╗██╔════╝██╔════╝╚════██╗███║██╔══██╗██║╚══███╔╝╚══███╔╝
-██████╔╝███████║███████╗█████╗   █████╔╝╚██║██████╔╝██║  ███╔╝   ███╔╝
-██╔══██╗██╔══██║╚════██║██╔══╝  ██╔═══╝  ██║██╔══██╗██║ ███╔╝   ███╔╝
+██████╔╝███████║███████╗█████╗   █████╔╝╚██║██████╔╝██║  ███╔╝   ███╔╝ 
+██╔══██╗██╔══██║╚════██║██╔══╝  ██╔═══╝  ██║██╔══██╗██║ ███╔╝   ███╔╝  
 ██████╔╝██║  ██║███████║███████╗███████╗ ██║██║  ██║██║███████╗███████╗
 ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
 
@@ -22,29 +22,39 @@ using namespace std;
 
 signed main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios::sync_with_stdio(false); cin.tie(NULL);
     int tc;
     cin >> tc;
-    while (tc--)
+    while(tc--)
     {
-        int n, k;
-        cin >> n >> k;
+        int n;
+        cin >> n;
         int arr[n];
-        int maxi = -1;
+        for(int i=0; i<n; i++)
+            cin >> arr[i];
+        int ans = 0;
         for (int i = 0; i < n; i++)
         {
-            cin >> arr[i];
+            if(i == 0){
+                ans += abs(arr[i]);
+            }
+            else if(arr[i] < 0 && arr[i-1] < 0){
+                // same sign
+                ans += abs(arr[i]);
+            } 
+            else if(arr[i] > 0 && arr[i-1] > 0){
+                // same sign
+                ans += abs(arr[i]);
+            }
+            else{
+                // different sign
+                int prevop = abs(arr[i-1]);
+                int currop = abs(arr[i]);
+                if(prevop < currop)
+                    ans += abs(prevop - currop);
+            }
         }
-        int subarr = n - k;
-        for (int i = 0; i <= n - subarr; i++)
-        {
-            int count = 0;
-            for (int j = i; j < i + subarr; j++)
-                count += arr[j];
-            maxi = max(maxi, count);
-        } 
-        cout << maxi << endl;
+        cout << ans << endl;
     }
     return 0;
 }
