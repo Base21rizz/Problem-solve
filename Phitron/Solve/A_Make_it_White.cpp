@@ -24,26 +24,31 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, k, count = 0;
-    cin >> n >> k;
-    int timeSpent = 0;
-    int i = 1;
-    while (((240 - k) >= timeSpent) && n > 0)
+    int tc;
+    cin >> tc;
+    while (tc--)
     {
-        if (count == 0)
-            timeSpent += 5;
-        else
-            timeSpent += i * 5;
-        i++;
-        count++;
-        n--;
-        cout << timeSpent << " " << count << endl;
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+        int bcff = 0;
+        int bcfb = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] != 'B')
+                bcff++;
+            if(s[i] == 'B')
+                break;
+        }
+        for (int i = n - 1; i >= 0; i--)
+        {
+            if (s[i] != 'B')
+                bcfb++;
+            if(s[i] == 'B')
+                break;
+        }
+        cout << n - bcff - bcfb << endl;
     }
-    cout << timeSpent << " " << count << " " << 240 - k << endl;
-    if ((240 - k) == timeSpent)
-        cout << count;
-    else
-        cout << count - 1;
-
     return 0;
 }
