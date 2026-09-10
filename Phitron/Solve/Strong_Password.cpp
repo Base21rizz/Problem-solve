@@ -28,27 +28,32 @@ signed main()
     cin >> tc;
     while (tc--)
     {
-        string s1, s2;
-        cin >> s1;
+        string s;
+        cin >> s;
         bool flag = false;
-        for (int i = 0; i < s1.size(); i++)
+        bool done = false;
+        for (int i = 0; i < s.size(); i++)
         {
-            if (s1[i] == s1[i + 1] && i - 1 > -1)
+            cout << s[i];
+            if (i + 1 < s.size() && s[i] == s[i + 1] && !done)
             {
+
+                if (s[i] == 'z')
+                    cout << 'a';
+                else
+                    cout << (char)(s[i] + 1);
                 flag = true;
-                s2 += s1[i];
-                s2 += s1[i] + 1;
-            }
-            else
-            {
-                s2 += s1[i];
+                done = true;
             }
         }
-
         if (!flag)
-            s2 += s1[s1.size() - 1] + 1;
-
-        cout << s2 << endl;
+        {
+            if (s[s.size() - 1] == 'z')
+                cout << 'a';
+            else
+                cout << (char)(s[s.size() - 1] + 1);
+        }
+        cout << endl;
     }
     return 0;
 }
