@@ -31,41 +31,29 @@ signed main()
         int n;
         cin >> n;
         int arr[n];
-        int first1 = LLONG_MAX;
-        int last1 = -1;
-        int firstminus1 = LLONG_MAX;
-        int lastminus1 = -1;
+        for (int i = 0; i < n; i++)
+            cin >> arr[i];
         for (int i = 0; i < n; i++)
         {
-            cin >> arr[i];
-            if (arr[i] == 1)
-                first1 = min(first1, i);
-            else if (arr[i] == -1)
-                firstminus1 = min(firstminus1, i);
+            if (arr[i] == 1 || arr[i] == -1)
+            {
+                arr[i] = 1;
+                break;
+            }
         }
-        for (int i = n - 1; i > 0; i--)
+        for (int i = n - 1; i >= 0; i--)
         {
-            if (arr[i] == 1)
-                last1 = max(last1, i);
-            else if (arr[i] == -1)
-                lastminus1 = max(lastminus1, i);
+            if (arr[i] == 1 || arr[i] == -1)
+            {
+                arr[i] = 1;
+                break;
+            }
         }
-
-        if (firstminus1 < first1)
-            arr[firstminus1] = 1;
-        else if (firstminus1 > first1)
-            arr[firstminus1] = 0;
-        else if (lastminus1 > last1)
-            arr[lastminus1] = 1;
-        else
-            arr[lastminus1] = 0;
-
         for (int i = 0; i < n; i++)
         {
             if (arr[i] == -1)
                 arr[i] = 0;
         }
-
         for (int i = 0; i < n; i++)
             cout << arr[i] << " ";
 
