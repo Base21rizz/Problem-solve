@@ -30,17 +30,19 @@ signed main()
     {
         int n;
         cin >> n;
-        unordered_map<int, int> mp;
-        while (n--)
+        vector<int> v(n);
+        map<int, int> mp;
+        for (int i = 0; i < n; i++)
+            cin >> v[i];
+        for (int i = n - 1; i >= 0; i--)
         {
-            int man;
-            cin >> man;
-            auto it = mp.find(man);
-            if (it != mp.end())
-                mp.erase(it);
-            mp[man]++;
+            int curr = v[i];
+            if (mp.find(curr) == mp.end())
+                mp[curr]++;
+            else
+                break;
         }
-        cout << mp.size() << endl;
+        cout << n - mp.size() << endl;
     }
     return 0;
 }
