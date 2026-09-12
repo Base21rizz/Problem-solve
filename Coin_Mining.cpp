@@ -29,18 +29,19 @@ signed main()
     while (tc--)
     {
         int x, y;
+        int ans = LLONG_MAX;
         cin >> x >> y;
-        int tp = y, cost = x, k = 1, ans = 1;
-        while (tp < cost)
+        for (int i = 1; i <= 201; i++) // gpu buying
         {
-            int cotp = ceil(cost / (tp * 1.0));
-            if (cotp != 1)
+            int tp = 0, cost = x * i, k = 0, day = 0;
+            while (tp <= cost) // calculate the days needed
             {
-                cost += x;
-                k++;
+                day++;
+                if (day <= i) // buy gpu if maximum no of gpu not reached
+                    k++;
+                tp += y * k * k;
             }
-            ans++;
-            tp += y * (k * k);
+            ans = min(ans, day); // take the minimum time needed to get the answer
         }
         cout << ans << endl;
     }
