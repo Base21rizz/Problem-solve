@@ -24,16 +24,21 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int n, a, b, c;
-    cin >> n >> a >> b >> c;
-    if (a + b + c == n)
-        cout << 3 << endl;
-    else if (a + b + c < n)
-        cout << n << endl;
-    else if (a + b <= n || b + c <= n || a + c <= n)
-        cout << 2 << endl;
-    else
-        cout << 1 << endl;
+    int n = 4;
+    int arr[n];
+    int maxi = -1;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+        maxi = max(arr[i], maxi);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == maxi)
+            continue;
+        else
+            cout << maxi - arr[i] << " ";
+    }
 
     return 0;
 }
