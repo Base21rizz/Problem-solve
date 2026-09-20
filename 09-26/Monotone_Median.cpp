@@ -30,43 +30,52 @@ signed main()
     {
         int n;
         cin >> n;
-        vector<int> arr;
-        arr.push_back(0);
-        for (int i = 1; i <= n; i++)
-        {
-            int val;
-            cin >> val;
-            arr.push_back(val);
-        }
-        int og = arr[n / 2];
-        int i = 1, j = n;
-        int tim = 0;
+        vector<int> v(n + 1);
+        vector<pair<int, int>> ans;
         bool flag = true;
-        sort(arr.begin(), arr.end());
-        /* for (int i = 1; i <= n; i++)
+        for (int i = 1; i <= n; i++)
+            cin >> v[i];
+
+        int k = (n + 1) / 2;
+        int median = k;
+        int l = 1, r = n;
+        pair<int, int> p = {l, r};
+        ans.pb(p);
+        int i = 2;
+        while (i <= k)
         {
-            cout << arr[i] << " ";
-        }
- */
-        while (true)
-        {
-            tim++;
-            if (tim % 2 == 0)
-                i++;
-            else
-                j--;
-            int median = floor((j - i) / 2);
-            if (arr[median] != og)
+            median--;
+            if (v[l] > median && v[l + 1] > median)
+                l += 2;
+            else if (v[r] > median && v[r - 1] > median)
+                r -= 2;
+
+            else if (v[l] > median && v[r] > median)
             {
-                flag = false;
-                break;
+                l++;
+                r--;
             }
-            cout << arr[median] << endl;
-        } /*
-         if (!flag)
-             cout << i << " " << j << endl;
-         else
-             cout << "-1" << endl; */
+            else
+                flag = false;
+
+            if (flag)
+            {
+                p = {l, r};
+                ans.pb(p);
+            }
+            else
+                break;
+            i++;
+        }
+        if (flag)
+        {
+            for (auto i = k - 1; i >= 0; i--)
+            {
+                cout << ans[i].first << " " << ans[i].second << endl;
+            }
+        }
+        else
+            cout << -1 << endl;
     }
     return 0;
 }
