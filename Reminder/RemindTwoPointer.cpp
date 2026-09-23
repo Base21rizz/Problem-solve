@@ -24,28 +24,30 @@ signed main()
 {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
-    int tc;
-    cin >> tc;
-    while (tc--)
+    int n, m;
+    cin >> n >> m;
+    vector<int> v1(n);
+    vector<int> v2(m);
+    multiset<pair<int, int>> ms;
+    for (int i = 0; i < n; i++)
+        cin >> v1[i];
+    for (int i = 0; i < m; i++)
+        cin >> v2[i];
+    int l = 0, r = 0, count = 0;
+    vector<int> ans;
+    while (true)
     {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
-        vector<int> v;
-        map<int, int> mp;
-        int count = 0;
-        for (int i = 0; i < n; i++)
+        if (v1[l] < v2[r] && (l < n))
+            count++, l++;
+        else
         {
-            int curr = s[i] - '0';
-            mp[curr]++;
+            cout << count << " ";
+            ans.pb(count);
+            r++;
         }
-        if (s[0] == 1)
-            cout << mp[0] << endl;
-        else if(s[0] == 0){
-            // use suffix and prefix to count all combination and then print 
-            
-        }
+        if (ans.size() == m)
+            break;
     }
+
     return 0;
 }

@@ -32,20 +32,27 @@ signed main()
         cin >> n;
         string s;
         cin >> s;
-        vector<int> v;
-        map<int, int> mp;
-        int count = 0;
-        for (int i = 0; i < n; i++)
+        int i = 0, j = n - 1;
+        bool flag = true;
+        while (true)
         {
-            int curr = s[i] - '0';
-            mp[curr]++;
+            if (i > j)
+            {
+                flag = false;
+                break;
+            }
+            if (s[i] == s[j])
+                break;
+            if (s[i] != s[j])
+            {
+                i++;
+                j--;
+            }
         }
-        if (s[0] == 1)
-            cout << mp[0] << endl;
-        else if(s[0] == 0){
-            // use suffix and prefix to count all combination and then print 
-            
-        }
+        if (flag)
+            cout << j - i + 1 << endl;
+        else
+            cout << 0 << endl;
     }
     return 0;
 }
