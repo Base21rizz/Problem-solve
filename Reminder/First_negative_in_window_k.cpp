@@ -29,19 +29,28 @@ signed main()
     vector<int> arr(n);
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-    int l = 0, r = 0, ans = -1, sum = 0;
+    int l = 0, r = 0, ind = 0;
+    queue<int> q;
+    vector<int> ans;
     while (l <= n - k && r <= n)
     {
-        sum += arr[r];
+        if (arr[r] < 0)
+            q.push(arr[r]);
+        if (arr[l - 1] == q.front())
+            q.pop();
         if (r - l + 1 == k)
         {
-            ans = max(ans, sum);
-            sum -= arr[l];
-            r++, l++;
+            if (!q.empty())
+            {
+                ans.push_back(q.front());
+            }
+            else
+                ans.push_back(0);
+            l++, r++;
         }
         else
             r++;
     }
-    cout << ans << endl;
-    return 0;
+    for (auto it : ans)
+        cout << it << ' ';
 }
