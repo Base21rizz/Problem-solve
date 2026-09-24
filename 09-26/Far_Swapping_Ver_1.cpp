@@ -33,29 +33,18 @@ signed main()
         map<int, int> mp;
         vector<int> v(n);
         for (int i = 0; i < n; i++)
-        {
             cin >> v[i];
-            mp[v[i]] = i;
-        }
         for (int i = 0; i < n; i++)
         {
-            int k = v[i];
-            for (int j = k - 2; j >= 1; i--)
+            for (int j = 1; j < n; j++)
             {
-                int jsindice = mp[j];
-                int ksindice = mp[k];
-                if (jsindice > ksindice)
-                {
-                    mp[j] = mp[k];
-                    mp[k] = jsindice;
-                }
+                if (v[j - 1] > v[j] + 1)
+                    swap(v[j], v[j - 1]);
             }
         }
-        vector<int> ans;
-        for (auto it : mp)
-        {
-            cout << it.first << " " << it.second << endl;
-        }
+        for (auto it : v)
+            cout << it << " ";
+        cout << endl;
     }
     return 0;
 }
