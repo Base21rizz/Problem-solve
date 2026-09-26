@@ -30,26 +30,23 @@ signed main()
     {
         int n;
         cin >> n;
-        multiset<int, greater<int>> ms;
-        for (int i = 0; i < n; i++)
+        int arr[n + 1];
+        for (int i = 1; i <= n; i++)
+            cin >> arr[i];
+        sort(arr + 1, arr + n + 1);
+        int pre[n + 1];
+        pre[0] = 0;
+        pre[1] = arr[1];
+        for (int i = 2; i <= n; i++)
+            pre[i] = pre[i - 1] + arr[i];
+        int ans = -1;
+        for (int i = 1; i <= n; i++)
         {
-            int val;
-            cin >> val;
-            ms.insert(val);
+            int s1 = pre[i], s2 = pre[n] - pre[i], c1 = i, c2 = n - i;
+            int curr = s1 * c2 + s2 * c1;
+            ans = max(curr, ans);
         }
-        int Cr = n / 2;
-        int loopc = Cr;
-        int Cb = n - (n / 2);
-        int Sr = 0, Sb = 0;
-        for (auto it : ms)
-        {
-            if (loopc > 0)
-                Sr += it;
-            else
-                Sb += it;
-            loopc--;
-        }
-        cout << (Sr * Cb + Sb * Cr) << endl;
+        cout << ans << endl;
     }
     return 0;
 }
