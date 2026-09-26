@@ -32,19 +32,34 @@ signed main()
         cin >> n;
         string s;
         cin >> s;
-        vector<int> v;
-        map<int, int> mp;
-        int count = 0;
+        map<char, int> mp;
         for (int i = 0; i < n; i++)
+            mp[s[i]]++;
+        if (s[0] == '1')
+            cout << mp['0'] << endl;
+        else if (s[0] == '0')
         {
-            int curr = s[i] - '0';
-            mp[curr]++;
-        }
-        if (s[0] == 1)
-            cout << mp[0] << endl;
-        else if(s[0] == 0){
-            // use suffix and prefix to count all combination and then print 
-            
+            // use suffix and prefix to count all combination and then print
+            vector<int> presum(n + 1), susum(n + 2);
+            for (int i = 1; i < n; i++)
+            {
+                presum[i] += presum[i - 1];
+                if (s[i] == '1')
+                    presum[i]++;
+            }
+            for (int i = n - 1; i >= 0; i--)
+            {
+                susum[i] += susum[i + 1];
+                if (s[i] == '0')
+                    susum[i]++;
+            }
+            int ans = LLONG_MAX;
+            for (int i = 0; i < n; i++)
+            {
+                int curr = presum[i] + susum[i + 1];
+                ans = min(curr, ans);
+            }
+            cout << ans << endl;
         }
     }
     return 0;
