@@ -22,7 +22,7 @@
 #define No cout << "No" << endl
 #define vi vector<int>
 #define si set<int>
-#define msi multiset<int>
+#define mpi multiset<int>
 #define all(v) (v).begin(), (v).end()
 #define pb push_back
 using namespace std;
@@ -40,37 +40,29 @@ signed main()
         cin >> s;
         int n = s.size();
         int l = 0, r = 0, ans = -1;
-        set<char> ms;
-        queue<char> q;
         map<char, int> mp;
         while (l < n && r < n)
         {
-            ms.insert(s[r]);
-            q.push(s[r]);
-            mp[s[r]]++;
-            if (ms.size() >= k)
+            mp[s[r]] = r;
+            if (mp.size() == k)
+                ans = max(ans, (r - l + 1));
+            else if (mp.size() > k)
             {
-                int hkjh = q.size();
-                ans = max(ans, hkjh);
-                while (l < r)
+                auto it = mp.begin();
+                int mn = 9999999;
+                char rm = ' ';
+                while (it != mp.end())
                 {
-                    char curr = s[l++];
-                    while (mp[curr] != 0)
-                    {
-                        if (q.empty())
-                            break;
-                        char x = q.front();
-                        q.pop();
-                        if (x == curr)
-                            mp[curr]--;
-                    }
+                    if (mn > it->second)
+                        mn = it->second, rm = it->first;
+                    it++;
                 }
+                l = mn + 1;
+                mp.erase(rm);
             }
             r++;
         }
-        // if (ms.size() == 1 || ms.size() )
-        //     ans = -1;
-        cout << ans;
+        cout << ans << endl;
     }
     return 0;
 }
