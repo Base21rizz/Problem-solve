@@ -31,11 +31,13 @@ signed main()
 {
     fast_IO;
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
     {
-        int n;
-        cin >> n;
-        }
+        int n, x;
+        cin >> n >> x;
+        int ans = ((2 * (x - 1)) + pow(2, (n - x + 1)));
+        cout << ans << endl;
+    }
     return 0;
 }
