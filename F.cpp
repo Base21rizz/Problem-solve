@@ -34,19 +34,21 @@ signed main()
     cin >> tc;
     while (tc--)
     {
-        int n, k;
-        cin >> n >> k;
-        int arr[n];
-        for (int i = 0; i < k; i++)
-        {
-            cin >> arr[i];
-            mp[arr[i]]++;
-        }
+        int n;
+        cin >> n;
+        vi v;
+        map<int, int> mp;
         for (int i = 0; i < n; i++)
         {
-            if (mp.find(i) != mp.end())
+            int val;
+            cin >> val;
+            v.pb(val);
+            if (val < 0)
+                mp[-1]++;
+            else
+                mp[1]++;
         }
-        cout << endl;
+        cout << mp[-1] << " " << mp[1] << endl;
     }
     return 0;
 }
