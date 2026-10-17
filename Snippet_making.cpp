@@ -27,15 +27,18 @@
 #define pb push_back
 using namespace std;
 
+void solve()
+{
+    int n;
+    cin >> n;
+}
+
 signed main()
 {
     fast_IO;
     int tc = 1;
     cin >> tc;
     while (tc--)
-    {
-        int n;
-        cin >> n;
-    }
+        solve();
     return 0;
 }
