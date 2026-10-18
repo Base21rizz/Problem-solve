@@ -39,19 +39,19 @@ void solve()
         v.pb(val);
     }
     int extra = 0;
-    int count = 1;
-    for (int i = 1; i < n; i++)
+    int count = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (v[i] != v[i - 1])
+        if (i == 0 || v[i] != v[i - 1])
             count++;
     }
     for (int k = 1; k <= 2; k++)
     {
-        for (int i = 0; i < n - 3; i++)
+        for (int i = 0; (i + 3) < n; i++)
         {
             if (v[i] == v[i + 1] && v[i + 2] == v[i + 3] && v[i] != v[i + 2])
                 extra = max(extra, (int)2);
-            if (v[i] == v[i + 1] && v[i + 2] != v[i + 3] && v[i + 3] != v[i])
+            if (v[i] == v[i + 1] && v[i + 2] != v[i] && v[i + 3] != v[i])
                 extra = max(extra, (int)1);
         }
         if (n >= 3 && v[n - 1] != v[n - 2] && v[n - 2] == v[n - 3])
