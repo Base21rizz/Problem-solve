@@ -41,7 +41,6 @@ signed main()
         {
             int curr = (m < k) ? m : k;
             m -= (m < k) ? m : k;
-
             if (steps % 2 == 0)
                 even -= (curr > s) ? s : curr, odd += (curr > s) ? s : curr;
             else
