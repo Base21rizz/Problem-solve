@@ -32,39 +32,22 @@ void solve()
     string p, s;
     cin >> p >> s;
     int n = p.size(), m = s.size();
-    char curr = p[0];
-    int lc = 0, prev = 0;
-    for (int i = 0; i < n; i++)
+    int i = 0, j = 0;
+    while (i < n)
     {
-        while (p[i] == curr)
-            lc++;
-        if (p[i] != curr)
+        char curr = p[i];
+        int inpcount = 0, inscount = 0;
+        while (i < n && p[i] == curr)
+            inpcount++, i++;
+        while (j < m && s[j] == curr)
+            inscount++, j++;
+        if (inscount < inpcount || inscount > (inpcount * 2))
         {
-            int covl = lc * 2, mincov = lc, j = prev;
-            while (j <= m)
-            {
-                if (mincov < 0 && s[j] != curr)
-                {
-                    prev = j;
-                    break;
-                }
-                else if (mincov > 0 & s[j] != curr)
-                {
-                    NO;
-                    return;
-                }
-                else if (covl >= 0 && s[j] == curr)
-                {
-                    NO;
-                    return;
-                }
-                j++, mincov--, covl--;
-            }
-            curr = p[i];
-            lc = 0;
+            NO;
+            return;
         }
     }
-    YES;
+    (j != m) ? NO : YES;
     return;
 }
 
