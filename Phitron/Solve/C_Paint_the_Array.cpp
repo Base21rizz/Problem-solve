@@ -44,17 +44,37 @@ void solve()
 {
     int n;
     cin >> n;
-    int mn = v[0];
     vi v(n);
     for (int i = 0; i < n; i++)
         cin >> v[i];
-    for (int i = 0; i < n; i += 2)
+    int g2 = 0, g1 = 0, ans = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (v[i] == 1)
-            break;
-        if (v[i] % mn == 0)
-            mn = min(v[i], mn);
+        if (i % 2 == 0)
+            g1 = gcd(v[i], g1);
+        else
+            g2 = gcd(v[i], g2);
     }
+    bool flag = true;
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 0 && v[i] % g2 == 0)
+            flag = false;
+    }
+    if (flag)
+        ans = g2;
+    else
+    {
+        flag = true;
+        for (int i = 0; i < n; i++)
+        {
+            if (i % 2 != 0 && v[i] % g1 == 0)
+                flag = false;
+        }
+        if (flag)
+            ans = g1;
+    }
+    cout << ans << endl;
 }
 
 signed main()
