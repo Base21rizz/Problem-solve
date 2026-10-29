@@ -44,24 +44,9 @@ void solve()
 {
     int n, a, b, p, q;
     cin >> n >> a >> b >> p >> q;
-    int mx = max(p, q);
+    int ans = (n / a * p) + (n / b * q);
     int mn = min(p, q);
-    int bi = (mx == p) ? a : b;
-    int ne = (bi == a) ? b : a;
-    int c = bi, d = ne;
-    int ans = 0;
-    while (n >= bi)
-    {
-        ans += mx;
-        bi += c;
-    }
-    bi = (mx == p) ? a : b;
-    while (n >= ne)
-    {
-        if (ne % bi != 0)
-            ans += mn;
-        ne += d;
-    }
+    ans -= ((n / lcm(a, b)) * mn);
     cout << ans << endl;
 }
 
