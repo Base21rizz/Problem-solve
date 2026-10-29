@@ -47,22 +47,41 @@ void solve()
     vi v(n);
     for (int i = 0; i < n; i++)
         cin >> v[i];
-    vector<pair<int, int>> vp;
-    for (int i = 0; i < n; i++)
+    int initialAns = 0;
+    for (int i = 1; i < n; i++)
     {
-        if (i + 1 < n)
-            vp.pb({v[i], v[i + 1]});
+        if (v[i] == v[i - 1])
+            initialAns++;
     }
-    int c = 0;
-    bool flag = true;
-    for (auto it : vp)
+    int pos = -1;
+    for (int i = 1; i < n; i++)
     {
-        if (it.first == it.second)
-            c++, flag = true;
-        else if ((it.first == it.second - 1 || it.first == it.second + 1) && flag)
-            c++, flag = false;
+        if (v[i] - v[i - 1] == -1)
+        {
+            pos = i;
+            break;
+        }
     }
-    cout << c << endl;
+    if (pos != -1)
+    {
+        for (int i = pos + 1; i < n; i++)
+        {
+            if (v[i] - v[i - 1] == 1)
+            {
+                cout << initialAns + 2 << endl;
+                return;
+            }
+        }
+    }
+    for (int i = 1; i < n; i++)
+    {
+        if (v[i] - v[i - 1] == -1 || v[i] - v[i - 1] == 1)
+        {
+            cout << initialAns + 1 << endl;
+            return;
+        }
+    }
+    cout << initialAns << endl;
 }
 
 signed main()
