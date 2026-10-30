@@ -27,28 +27,32 @@
 #define pb push_back
 using namespace std;
 
+int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
+int lcm(int a, int b) { return a / gcd(a, b) * b; }
+
+bool isPrime(int n)
+{
+    if (n == 1)
+        return false;
+    for (int i = 2; i * i <= n; i++)
+        if (n % i == 0)
+            return false;
+    return true;
+}
+
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+    cout << lcm(n, k) << " " << gcd(n, k);
+}
+
 signed main()
 {
     fast_IO;
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
     while (tc--)
-    {
-        int n;
-        cin >> n;
-        vi v;
-        map<int, int> mp;
-        for (int i = 0; i < n; i++)
-        {
-            int val;
-            cin >> val;
-            v.pb(val);
-            if (val < 0)
-                mp[-1]++;
-            else
-                mp[1]++;
-        }
-        cout << mp[-1] << " " << mp[1] << endl;
-    }
+        solve();
     return 0;
 }
