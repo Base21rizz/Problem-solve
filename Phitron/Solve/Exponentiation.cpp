@@ -26,7 +26,20 @@
 #define all(v) (v).begin(), (v).end()
 #define pb push_back
 using namespace std;
-int MOD = 1e9 + 7;
+const int MOD = 1e9 + 7;
+
+int power(int a, int b)
+{
+    int ans = 1 % MOD;
+    while (b)
+    {
+        if (b & 1)
+            ans = (1LL * ans % MOD * a % MOD) % MOD;
+        a = 1LL * a * a % MOD;
+        b >>= 1;
+    }
+    return ans;
+}
 
 int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
 int lcm(int a, int b) { return a / gcd(a, b) * b; }
@@ -45,8 +58,7 @@ void solve()
 {
     int a, b;
     cin >> a >> b;
-    int ans = 1;
-    cout << (int)pow(a, b) % MOD << endl;
+    cout << power(a, b) << endl;
 }
 
 signed main()

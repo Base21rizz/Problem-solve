@@ -26,10 +26,10 @@
 #define all(v) (v).begin(), (v).end()
 #define pb push_back
 using namespace std;
+const int MOD = 1e9 + 7;
 
 int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
 int lcm(int a, int b) { return a / gcd(a, b) * b; }
-
 bool isPrime(int n)
 {
     if (n == 1)
@@ -39,11 +39,24 @@ bool isPrime(int n)
             return false;
     return true;
 }
+int power_bi(int a, int b)
+{
+    int ans = 1 % MOD;
+    while (b)
+    {
+        if (b & 1)
+            ans = (1LL * ans % MOD * a % MOD) % MOD;
+        a = 1LL * a * a % MOD;
+        b >>= 1;
+    }
+    return ans;
+}
 
 void solve()
 {
-    int a, b;
-    cin >> a >> b;
+    int n;
+    cin >> n;
+    cout << power_bi(n, 100000) << endl;
 }
 
 signed main()
