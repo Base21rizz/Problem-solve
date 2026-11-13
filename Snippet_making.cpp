@@ -11,6 +11,14 @@
 ===============================================================================
 */
 #include <bits/stdc++.h>
+using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>>
+using namespace __gnu_pbds;
+template <typename T>
+// less<T> means set less_equal<T> means multiset
+using pbds = tree<T, null_type, less<T>, rb_tree_tag,
+                  tree_order_statistics_node_update>;
 #define int long long
 #define endl '\n'
 #define fast_IO                       \
@@ -25,7 +33,6 @@
 #define msi multiset<int>
 #define all(v) (v).begin(), (v).end()
 #define pb push_back
-using namespace std;
 const int MOD = 1e9 + 7;
 
 int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
@@ -56,14 +63,22 @@ void solve()
 {
     int n;
     cin >> n;
-    cout << power_bi(n, 100000) << endl;
+    pbds<int> p;
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin >> x;
+        p.insert(x);
+    }
+
+    cout << *p.find_by_order(2) << endl;
 }
 
 signed main()
 {
     fast_IO;
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
     while (tc--)
         solve();
     return 0;
