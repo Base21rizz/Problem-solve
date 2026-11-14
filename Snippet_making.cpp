@@ -13,7 +13,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
 template <typename T>
 // less<T> means set less_equal<T> means multiset
@@ -63,22 +63,13 @@ void solve()
 {
     int n;
     cin >> n;
-    pbds<int> p;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        p.insert(x);
-    }
-
-    cout << *p.find_by_order(2) << endl;
 }
 
 signed main()
 {
     fast_IO;
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     while (tc--)
         solve();
     return 0;
