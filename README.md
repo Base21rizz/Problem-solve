@@ -35,6 +35,14 @@ Because these are competitive programming submissions, the code is heavily optim
 ===============================================================================
 */
 #include <bits/stdc++.h>
+using namespace std;
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <typename T>
+// less<T> means set less_equal<T> means multiset
+using pbds = tree<T, null_type, less<T>, rb_tree_tag,
+                  tree_order_statistics_node_update>;
 #define int long long
 #define endl '\n'
 #define fast_IO                       \
@@ -49,7 +57,6 @@ Because these are competitive programming submissions, the code is heavily optim
 #define msi multiset<int>
 #define all(v) (v).begin(), (v).end()
 #define pb push_back
-using namespace std;
 const int MOD = 1e9 + 7;
 
 int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
