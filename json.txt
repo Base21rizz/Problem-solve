@@ -1,0 +1,289 @@
+{
+	"1": {
+		"prefix": "base",
+		"body": [
+			"/*",
+			"===============================================================================",
+			"",
+			"██████╗  █████╗ ███████╗███████╗██████╗  ██╗██████╗ ██╗███████╗███████╗",
+			"██╔══██╗██╔══██╗██╔════╝██╔════╝╚════██╗███║██╔══██╗██║╚══███╔╝╚══███╔╝",
+			"██████╔╝███████║███████╗█████╗   █████╔╝╚██║██████╔╝██║  ███╔╝   ███╔╝",
+			"██╔══██╗██╔══██║╚════██║██╔══╝  ██╔═══╝  ██║██╔══██╗██║ ███╔╝   ███╔╝",
+			"██████╔╝██║  ██║███████║███████╗███████╗ ██║██║  ██║██║███████╗███████╗",
+			"╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝",
+			"",
+			"===============================================================================",
+			"*/",
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"#include <ext/pb_ds/assoc_container.hpp>",
+			"#include <ext/pb_ds/tree_policy.hpp>",
+			"using namespace __gnu_pbds;",
+			"template <typename T>",
+			"// less<T> means set less_equal<T> means multiset",
+			"using pbds = tree<T, null_type, less<T>, rb_tree_tag,",
+			"                  tree_order_statistics_node_update>;",
+			"#define int long long",
+			"#define endl '\\n'",
+			"#define fast_IO                       \\",
+			"    ios_base::sync_with_stdio(false); \\",
+			"    cin.tie(NULL)",
+			"#define YES cout << \"YES\" << endl",
+			"#define NO cout << \"NO\" << endl",
+			"#define Yes cout << \"Yes\" << endl",
+			"#define No cout << \"No\" << endl",
+			"#define vi vector<int>",
+			"#define si set<int>",
+			"#define msi multiset<int>",
+			"#define all(v) (v).begin(), (v).end()",
+			"#define pb push_back",
+			"const int MOD = 1e9 + 7;",
+			"",
+			"int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }",
+			"int lcm(int a, int b) { return a / gcd(a, b) * b; }",
+			"bool isPrime(int n)",
+			"{",
+			"    if (n == 1)",
+			"        return false;",
+			"    for (int i = 2; i * i <= n; i++)",
+			"        if (n % i == 0)",
+			"            return false;",
+			"    return true;",
+			"}",
+			"int power_bi(int a, int b)",
+			"{",
+			"    int ans = 1 % MOD;",
+			"    while (b)",
+			"    {",
+			"        if (b & 1)",
+			"            ans = (1LL * ans % MOD * a % MOD) % MOD;",
+			"        a = 1LL * a * a % MOD;",
+			"        b >>= 1;",
+			"    }",
+			"    return ans;",
+			"}",
+			"",
+			"void solve()",
+			"{",
+			"    int n;",
+			"    cin >> n;",
+			"}",
+			"",
+			"signed main()",
+			"{",
+			"    fast_IO;",
+			"    int tc = 1;",
+			"    cin >> tc;",
+			"    while (tc--)",
+			"        solve();",
+			"    return 0;",
+			"}"
+		],
+		"description": ""
+	},
+	"2": {
+		"prefix": "Mex_using_map",
+		"body": [
+			"int mex = 0;",
+			"    while (mp.count(mex)) mex++;"
+		],
+		"description": ""
+	},
+	"3": {
+		"prefix": "viv",
+		"body": [
+			"vi v(n);",
+			"for (int i = 0; i < n; i++)",
+			"    cin >> v[i];"
+		],
+		"description": ""
+	},
+	"4": {
+		"prefix": "Node_LL",
+		"body": [
+			"class Node",
+			"{",
+			"public:",
+    "	int val;",
+    "	Node *next;",
+    "	Node(int val)",
+    "	{",
+    "		this->val = val;",
+    "		this->next = NULL;",
+    "	}",
+			"};"
+		],
+		"description": ""
+	},
+	"5": {
+		"prefix": "Print_LL",
+		"body": [
+			"void Print_LL(Node *head)",
+			"{",
+    "	Node *temp = head;",
+    "	while (temp != NULL)",
+    "	{",
+    "		cout << temp->val << endl;",
+    "		temp = temp->next;",
+    "	}",
+			"}"
+		],
+		"description": ""
+	},
+	"6": {
+		"prefix": "Print_LL_rev",
+		"body": [
+			"void Print_LL_rev(Node *temp)",
+			"{",
+    "	if (temp == NULL)",
+    "		return;",
+    "	Print_LL_rev(temp->next);",
+    "	cout << temp->val << endl;",
+			"}"
+		],
+		"description": ""
+	},
+	"7": {
+		"prefix": "Sort_LL",
+		"body": [
+			"void sort_LL(Node *&head)",
+			"{",
+    "	for (Node *i = head; i->next != NULL; i = i->next) // Think of this like normal selection sort for arrays",
+    "	{",
+    "		for (Node *j = i->next; j != NULL; j = j->next)",
+    "		{",
+    "			if (i->val > j->val)",
+    "				swap(i->val, j->val);",
+    "		}",
+    "	}",
+			"}"
+		],
+		"description": ""
+	},
+	"8": {
+		"prefix": "Insert_at_tail",
+		"body": [
+			"void Insert_at_tail(Node *&head, Node *&tail, int val) // pointer needs to be changed hence the use of &",
+			"{",
+    "	Node *newNode = new Node(val);",
+    "	if (head == NULL) // If there's no Nodes or LL's empty",
+    "	{",
+    "		head = newNode;",
+    "		tail = newNode;",
+    "		return;",
+    "	}",
+    "	tail->next = newNode;",
+    "	tail = tail->next; // can also use the newNode as tail.next is newNode",
+			"}"
+		],
+		"description": ""
+	},
+	"9": {
+		"prefix": "Insert_at_any_position",
+		"body": [
+			"void Insert_at_any_position(Node *&head, int val, int pos) // pointer needs to be changed hence the use of &",
+			"{",
+    "	// If asked for index then change the count to 0",
+    "	Node *newNode = new Node(val);",
+    "	if (pos == 1)",
+    "	{",
+    "		newNode->next = head;",
+    "		head = newNode;",
+    "		return;",
+    "	}",
+    "	Node *temp = head;",
+    "	int count = 1; // start from 1'st position",
+    "	while (count != pos - 1)",
+    "	{",
+    "		temp = temp->next;",
+    "		count++;",
+    "	}",
+    "	// temp currently at positon - 1",
+    "	newNode->next = temp->next;",
+    "	temp->next = newNode;",
+			"}"
+		],
+		"description": ""
+	},
+	"10": {
+		"prefix": "Delete_at_any_index",
+		"body": [
+			"void Delete_at_any_index(Node *&head, int index)",
+			"{",
+    "	int count = 0;",
+    "	Node *temp = head;",
+    "	while (count < index - 1)",
+    "	{",
+    "		temp = temp->next;",
+    "		count++;",
+    "	}",
+    "	Node *deleteNode = temp->next;",
+    "	temp->next = deleteNode->next;",
+    "	delete deleteNode;",
+			"}"
+		],
+		"description": ""
+	},
+	"11": {
+		"prefix": "Node_BT",
+		"body": [
+			"class Node",
+			"{",
+			"public:",
+			"    int val;",
+			"    Node *left;",
+			"    Node *right;",
+			"    Node(int val)",
+			"    {",
+			"        this->val = val;",
+			"        this->left = NULL;",
+			"        this->right = NULL;",
+			"    }",
+			"};"
+		],
+		"description": "Binary Tree's Node"
+	},
+	"12": {
+		"prefix": "mpc",
+		"body": [
+			"for (auto [x, y] : mp)",
+			"            cout << x << \" \" << y << endl;"
+		],
+		"description": ""
+	},
+	"13": {
+		"prefix": "presum",
+		"body": [
+			"int pre[n] = {};",
+			"pre[0] = v[0];",
+			"for (int i = 1; i < n; i++)",
+			"	pre[i] = pre[i - 1] + v[i];"
+		],
+		"description": ""
+	},
+	"14": {
+		"prefix": "sufsum",
+		"body": [
+			"int suf[n] = {};",
+			"suf[n - 1] = v[n - 1];",
+			"for (int i = n - 2; i >= 0; i--)",
+			"	suf[i] = suf[i + 1] + v[i];"
+		],
+		"description": ""
+	},
+	"15": {
+		"prefix": "inversion",
+		"body": [
+			"int inv = 0;",
+			"pbds<int> p;",
+			"for (int i = 0; i < n; i++)",
+			"{",
+			"    // how many numbers already in the set are biger than a[i]",
+			"    inv += p.size() - p.order_of_key(v[i]);",
+			"    p.insert(v[i]);",
+			"}",
+			"cout << inv << endl;"
+		],
+		"description": ""
+	}
+}
