@@ -61,41 +61,47 @@ int power_bi(int a, int b)
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    map<int, int> mp;
-    for (int i = 0; i < k; i++)
+    int n;
+    cin >> n;
+    string s, t;
+    int s1 = -1, t1 = -1;
+    cin >> s >> t;
+    for (int i = 0; i < n; i++)
     {
-        int x, y;
-        cin >> x >> y;
-        mp[x] = y;
-    }
-    int save = 0;
-    bool flag = true;
-    int ans = 0;
-    vi x(n + 1), l(n + 1);
-    for (auto it : mp)
-    {
-        x[it.first] += 2;
-        l[it.first]++;
-    }
-    for (int i = 1; i <= n; i++)
-    {
-        if (flag) // first time
+        if (s[i] == '1')
         {
-            int t = x[i] + (m - l[i]);
-            save = t - 2;
-            ans += t - save;
-            flag = false;
-        }
-        else
-        {
-            int t = x[i] + (m - l[i]);
-            ans += t - save;
-            save = t;
+            s1 = i;
+            break;
         }
     }
-    cout << ans << endl;
+    for (int i = 0; i < n; i++)
+    {
+        if (t[i] == '1')
+        {
+            t1 = i;
+            break;
+        }
+    }
+    if (s1 == -1 && s != t)
+    {
+        NO;
+        return;
+    }
+    else if (s1 == -1 && s == t)
+    {
+        YES;
+        return;
+    }
+    else if (t1 == -1)
+    {
+        YES;
+        return;
+    }
+
+    if (s1 <= t1)
+        YES;
+    else
+        NO;
 }
 
 signed main()
