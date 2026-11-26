@@ -63,31 +63,40 @@ void solve()
 {
     int n, m;
     cin >> n >> m;
-    int arr[101][101];
-    int i = 1, j = 1, ans = 0;
-    int x = max(i, j);
-    while (true)
+    vector<vector<char>> grid(n, vector<char>(m, '.'));
+    int row = 0, column = 0, rook = 0;
+    while (row < n and column < m)
     {
-        arr[i][j] = 1;
-        if (i % 2 == 0)
-            j++, i++;
-        else
-            i++;
-
-        if (i > x || j > x)
-            break;
-        ans++;
-    }
-    cout << ans << endl;
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= m; j++)
+        // inside grid
+        int row_baki = n - row;
+        int col_baki = m - column;
+        if (row_baki == 1 and col_baki == 1)
         {
-            cout << arr[i][j] << " ";
+            // 1 ta baki
+            grid[row][column] = 'R';
+            row++, column++, rook++;
+            break;
         }
+        if (row_baki > col_baki)
+        {
+            grid[row][column] = 'R';
+            grid[row + 1][column] = 'R';
+            row += 2, column++, rook += 2;
+        }
+        else
+        {
+            grid[row][column] = 'R';
+            grid[row][column + 1] = 'R';
+            row++, column += 2, rook += 2;
+        }
+    }
+    cout << rook << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+            cout << grid[i][j];
         cout << endl;
     }
-    cout << endl;
 }
 
 signed main()
